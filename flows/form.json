@@ -1,0 +1,12 @@
+{
+  "steps": [
+    { "action": "goto", "url": "examples/demo_form.html" },
+    { "action": "fill", "label": "Nome", "value": "Maria" },
+    { "action": "fill", "placeholder": "Email", "value": "maria@exemplo.com" },
+    { "action": "select", "label": "Estado", "value": "RN" },
+    { "action": "check", "label": "Aceito os termos" },
+    { "action": "click", "role": "button", "name": "Enviar" },
+    { "action": "wait", "selector": "#resultado", "state": "visible" },
+    { "action": "screenshot", "path": "form.png" }
+  ]
+}

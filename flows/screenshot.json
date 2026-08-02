@@ -1,0 +1,8 @@
+{
+  "steps": [
+    { "action": "goto", "url": "https://example.com" },
+    { "action": "wait", "ms": 1000 },
+    { "action": "print", "value": "title" },
+    { "action": "screenshot", "path": "example.png" }
+  ]
+}
