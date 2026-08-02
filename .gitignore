@@ -1,0 +1,19 @@
+# Perfil do navegador (contém cookies e sessões — nunca versionar)
+.chrome-profile/
+
+# Segredos
+.env
+.env.local
+*.pem
+*.key
+
+# Saídas de execução
+*.png
+!docs/*.png
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
