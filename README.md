@@ -1,5 +1,9 @@
 # browser-flow
 
+[![tests](https://github.com/engdesoftwareg/browser-flow/actions/workflows/tests.yml/badge.svg)](https://github.com/engdesoftwareg/browser-flow/actions/workflows/tests.yml)
+[![python](https://img.shields.io/badge/python-3.9%20%7C%203.11%20%7C%203.12-blue)](https://github.com/engdesoftwareg/browser-flow/actions/workflows/tests.yml)
+[![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
 Automação de navegador escrita como **JSON**, não como código. Descreva os passos em um arquivo, rode um comando, o Chrome faz o resto.
 
 ```bash
@@ -58,6 +62,17 @@ python3 browser_flow.py flows/form.json --headless   # sem janela
 ```
 
 Opções: `--headless` (sem janela) · `--slow 150` (pausa entre ações, em ms) · `--keep-open` (mantém o Chrome aberto no fim) · `--profile CAMINHO`.
+
+## Testes
+
+```bash
+pip install -r requirements-dev.txt
+pytest -q
+```
+
+São **14 testes** que não abrem navegador — rodam em ~0,1 s e cobrem a expansão de `${VAR}`, a leitura do `.env` (que nunca sobrescreve o ambiente real), a validação do formato dos passos e a resolução de URLs. Um teste parametrizado percorre todos os JSONs de `flows/` e falha se algum usar uma ação inexistente, então exemplo quebrado não passa despercebido.
+
+O CI roda em **Python 3.9, 3.11 e 3.12** a cada push e pull request.
 
 ## Resultado
 

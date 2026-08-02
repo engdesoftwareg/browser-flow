@@ -15,6 +15,22 @@ DEFAULT_PROFILE = str(Path(__file__).resolve().parent / ".chrome-profile")
 
 ENV_PATTERN = re.compile(r"\$\{([A-Z_][A-Z0-9_]*)\}")
 
+ACOES_SUPORTADAS = frozenset(
+    {
+        "goto",
+        "click",
+        "fill",
+        "type",
+        "press",
+        "check",
+        "uncheck",
+        "select",
+        "wait",
+        "screenshot",
+        "print",
+    }
+)
+
 
 def load_env(path=".env"):
     """Lê um .env simples (CHAVE=valor) sem sobrescrever o ambiente real."""
@@ -92,6 +108,9 @@ def run_step(page, step, index):
     action = step.get("action")
     if not action:
         raise ValueError(f"Passo {index}: faltou action.")
+
+    if action not in ACOES_SUPORTADAS:
+        raise ValueError(f"Passo {index}: action desconhecida: {action}")
 
     timeout = step.get("timeout", 30000)
 
